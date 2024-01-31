@@ -1,21 +1,11 @@
-#include "Contact.hpp"
-
-/* Contact some;
-	some.SetFirstN("Davyd");
-	some.SetLastN("Shrediinger");
-	some.SetNickN("PollaMan");
-	some.SetPhoneN("12-98-09-1");
-	some.SetSecret("I have polla 1cm");
-
-	some.GetFirstN();
-	some.GetLastN();
-	some.GetNickN();
-	some.GetPhoneN();
-	some.GetSecret(); */
+#include "PhoneBook.hpp"
 
 int main(void)
 {
+	PhoneBook book;
+
 	std::cout << "Welcome to PhoneBookX80 🙌!!!" << std::endl;
+
 	while (1) {
 		std::string command;
 
@@ -23,12 +13,14 @@ int main(void)
 
 		std::getline(std::cin, command);
 
-		if (command == "EXIT")
+		if (command == "exit" || std::cin.eof())
 			break;
-		else if (command == "ADD")
-			PhoneBook.createContact();
+		else if (command == "add")
+			book.Add();
+		else if (command == "search")
+			book.PrintPhoneBook();
 		else
-			std::cout << "Invalid command, try again!" << std::endl;
+			std::cout << "Invalid command, [search, add, exit]" << std::endl;
 	}
 	return (0);
 }

@@ -11,17 +11,17 @@ public:
 	~Contact();
 
 	// Setters
-	void SetFirstN(std::string data);
-	void SetLastN(std::string data);
-	void SetNickN(std::string data);
-	void SetPhoneN(std::string data);
+	void SetFirst(std::string data);
+	void SetLast(std::string data);
+	void SetNick(std::string data);
+	void SetPhone(std::string data);
 	void SetSecret(std::string data);
 
 	// Getters
-	std::string GetFirstN(void);
-	std::string GetLastN(void);
-	std::string GetNickN(void);
-	std::string GetPhoneN(void);
+	std::string GetFirst(void);
+	std::string GetLast(void);
+	std::string GetNick(void);
+	std::string GetPhone(void);
 	std::string GetSecret(void);
 
 private:

@@ -9,16 +9,16 @@ Contact::~Contact() {
 }
 
 // Setters
-void Contact::SetFirstN(std::string data) {
+void Contact::SetFirst(std::string data) {
 	_firstName = data;
 }
-void Contact::SetLastN(std::string data) {
+void Contact::SetLast(std::string data) {
 	_lastName = data;
 }
-void Contact::SetNickN(std::string data) {
+void Contact::SetNick(std::string data) {
 	_nickName = data;
 }
-void Contact::SetPhoneN(std::string data) {
+void Contact::SetPhone(std::string data) {
 	_phoneNumber = data;
 }
 void Contact::SetSecret(std::string data) {
@@ -26,16 +26,16 @@ void Contact::SetSecret(std::string data) {
 }
 
 // Getters
-std::string Contact::GetFirstN(void) {
+std::string Contact::GetFirst(void) {
 	return (_firstName);
 }
-std::string Contact::GetLastN(void) {
+std::string Contact::GetLast(void) {
 	return (_lastName);
 }
-std::string Contact::GetNickN(void) {
+std::string Contact::GetNick(void) {
 	return (_nickName);
 }
-std::string Contact::GetPhoneN(void) {
+std::string Contact::GetPhone(void) {
 	return (_phoneNumber);
 }
 std::string Contact::GetSecret(void) {
