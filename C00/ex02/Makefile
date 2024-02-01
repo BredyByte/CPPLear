@@ -1,6 +1,6 @@
-NAME = megaphone
+NAME = bank
 
-SRCS = megaphone.cpp
+SRCS = Account.cpp tests.cpp
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
