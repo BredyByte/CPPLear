@@ -23,18 +23,18 @@ void PhoneBook::Search() {
         return;
     }
 
-	std::cout << std::setfill('_') << std::setw(46) << "_" << std::setfill(' ') << std::endl;
-    std::cout << "| Index | ";
-    std::cout << std::setw(10) << "First Name | ";
-    std::cout << std::setw(10) << "Last Name | ";
-    std::cout << std::setw(10) << "Nick Name " << "|" << std::endl;
-	std::cout << std::setfill('_') << std::setw(46) << "_" << std::setfill(' ') << std::endl;
+	std::cout << std::setfill('_') << std::setw(42) << "_" << std::setfill(' ') << std::endl;
+    std::cout << "| Index |";
+    std::cout << std::setw(10) << "First Name|";
+    std::cout << std::setw(10) << "Last  Name|";
+    std::cout << std::setw(10) << "Nick  Name|" << std::endl;
+	std::cout << std::setfill('_') << std::setw(42) << "_" << std::setfill(' ') << std::endl;
     for (int i = 0; i < _currentSize; i++) {
-        std::cout << "|   " << i + 1 << "   | ";
-        std::cout << std::setw(10) << FormatString(_contacts[i].GetFirst()) << " | ";
-        std::cout << std::setw(10) << FormatString(_contacts[i].GetLast()) << "| ";
-        std::cout << std::setw(10) << FormatString(_contacts[i].GetNick()) << "| " << std::endl;
-		std::cout << std::setfill('_') << std::setw(46) << "_" << std::setfill(' ') << std::endl;
+        std::cout << "|   " << i + 1 << "   |";
+        std::cout << std::setw(10) << FormatString(_contacts[i].GetFirst()) << "|";
+        std::cout << std::setw(10) << FormatString(_contacts[i].GetLast()) << "|";
+        std::cout << std::setw(10) << FormatString(_contacts[i].GetNick()) << "|" << std::endl;
+		std::cout << std::setfill('_') << std::setw(42) << "_" << std::setfill(' ') << std::endl;
     }
 
 	std::string index = GetData("Index[1-8]: ", 1);
