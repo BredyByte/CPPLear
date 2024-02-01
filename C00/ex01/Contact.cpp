@@ -1,11 +1,12 @@
 #include "Contact.hpp"
+#include "main.hpp"
 
 Contact::Contact() {
-	std::cout << "Constructor called" << std::endl;
+
 }
 
 Contact::~Contact() {
-	std::cout << "Destrutcor called" << std::endl;
+
 }
 
 // Setters

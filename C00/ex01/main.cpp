@@ -1,26 +1,43 @@
+#include "main.hpp"
 #include "PhoneBook.hpp"
+#include "Contact.hpp"
+
+std::string GetData(std::string message ,int type) {
+	std::string data;
+
+	std::cout << message;
+	std::getline(std::cin, data);
+	if (std::cin.eof())
+		exit(1);
+	if (type == 1 && data.length() != 0 && std::isdigit(data[0])) {
+		return (data);
+	}
+	else if (type == 0 && data.length() != 0 && std::isalnum(data[0])) {
+		return (data);
+	}
+	else {
+		return (GetData(message, type));
+	}
+}
 
 int main(void)
 {
 	PhoneBook book;
 
-	std::cout << "Welcome to PhoneBookX80 🙌!!!" << std::endl;
-
 	while (1) {
-		std::string command;
+		std::string command = GetData("> ", 0);
 
-		std::cout << "Please enter a command: ";
-
-		std::getline(std::cin, command);
-
-		if (command == "exit" || std::cin.eof())
+		if (command == "EXIT")
 			break;
-		else if (command == "add")
+		else if (command == "ADD") {
 			book.Add();
-		else if (command == "search")
-			book.PrintPhoneBook();
-		else
-			std::cout << "Invalid command, [search, add, exit]" << std::endl;
+		}
+		else if (command == "SEARCH") {
+			book.Search();
+		}
+		else {
+			std::cout << "Invalid command: [SEARCH, ADD, EXIT]" << std::endl;
+		}
 	}
 	return (0);
 }
