@@ -35,13 +35,27 @@ Account::~Account( void ) {
 	std::cout << "amount:" << _amount << ";" << "closed" << std::endl;
 }
 
-
-/* bool	makeWithdrawal( int withdrawal );
-	int		checkAmount( void ) const; */
-
-bool	makeWithdrawal( int withdrawal ) {
- std::cout << "withdrawal" << std::endl;
+bool	Account::makeWithdrawal( int withdrawal ) {
+	_displayTimestamp();
+	std::cout << "index:" << _accountIndex << ";";
+	std::cout << "p_amount:" << _amount << ";";
+	if (withdrawal > _amount) {
+		std::cout << "withdrawal:refused" << std::endl;
+		return (false);
+	}
+	else {
+		
+	}
+	return (_amount >= withdrawal);
 }
+
+/* int		Account::checkAmount( void ) const {
+
+	if (makeWithdrawal)
+		return (_amount);
+	else
+		return (0);
+} */
 
 void Account::makeDeposit( int deposit ) {
 	_displayTimestamp();
