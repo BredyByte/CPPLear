@@ -27,16 +27,16 @@ void Harl::complain(std::string level) {
 
 	switch (levelInt) {
 		case DEBUT:
-			_debut();
+			(this->*complain_ptr[DEBUT])();
 			break;
 		case INFO:
-			_info();
+			(this->*complain_ptr[INFO])();
 			break;
 		case WARNING:
-			_warning();
+			(this->*complain_ptr[WARNING])();
 			break;
 		case ERROR:
-			_error();
+			(this->*complain_ptr[ERROR])();
 			break;
 		default:
 		    std::cerr << "Error: Unknown log level." << std::endl;
