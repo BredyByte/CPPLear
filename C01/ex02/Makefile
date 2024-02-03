@@ -1,4 +1,4 @@
-NAME = brain
+NAME = program
 
 SRCS = main.cpp
 

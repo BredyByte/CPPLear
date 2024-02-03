@@ -7,8 +7,11 @@ std::string GetData(std::string message ,int type) {
 
 	std::cout << message;
 	std::getline(std::cin, data);
-	if (std::cin.eof())
-		exit(1);
+
+	if (std::cin.eof()) {
+		std::exit(1);
+	}
+
 	if (type == 1 && data.length() != 0 && std::isdigit(data[0])) {
 		return (data);
 	}
@@ -20,15 +23,15 @@ std::string GetData(std::string message ,int type) {
 	}
 }
 
-int main(void)
-{
+int main() {
 	PhoneBook book;
 
 	while (1) {
 		std::string command = GetData("> ", 0);
 
-		if (command == "EXIT")
+		if (command == "EXIT") {
 			break;
+		}
 		else if (command == "ADD") {
 			book.Add();
 		}

@@ -9,7 +9,6 @@ Contact::~Contact() {
 
 }
 
-// Setters
 void Contact::SetFirst(std::string data) {
 	_firstName = data;
 }
@@ -26,7 +25,6 @@ void Contact::SetSecret(std::string data) {
 	_darkestSecret = data;
 }
 
-// Getters
 std::string Contact::GetFirst(void) {
 	return (_firstName);
 }

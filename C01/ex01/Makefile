@@ -1,4 +1,4 @@
-NAME = zombies
+NAME = program
 
 SRCS = main.cpp Zombie.cpp zombieHorde.cpp
 

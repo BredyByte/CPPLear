@@ -1,4 +1,4 @@
-NAME = fighting
+NAME = program
 
 SRCS = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
 

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <iomanip>
+#include <cstdlib>
 
 std::string GetData(std::string message, int type);
 

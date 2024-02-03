@@ -1,4 +1,4 @@
-NAME = bank
+NAME = program
 
 SRCS = Account.cpp tests.cpp
 

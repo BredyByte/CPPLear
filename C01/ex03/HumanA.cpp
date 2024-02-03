@@ -1,11 +1,7 @@
 #include "HumanA.hpp"
-#include "Weapon.hpp"
-
-/*  */
 
 HumanA::HumanA(std::string name, Weapon& weapon): _weapon(weapon) {
 	_name = name;
-	//_weapon.setType(weapon.getType());
 }
 
 HumanA::~HumanA() {
