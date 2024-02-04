@@ -22,8 +22,17 @@ int stringToInt(const std::string& str) {
     return (result);
 }
 
+/* int stringToIntSscanf(const std::string *str) {
+	int result;
+
+	std::sscanf(str->c_str(), "%d", &result);
+
+	return (result);
+} */
+
 void Harl::complain(std::string level) {
 	int levelInt = stringToInt(level);
+	//int levelInt = stringToIntSscanf(&level);
 
 	switch (levelInt) {
 		case DEBUT:
