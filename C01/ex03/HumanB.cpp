@@ -1,6 +1,7 @@
 #include "HumanB.hpp"
 
 HumanB::HumanB(std::string name) {
+	_weapon = nullptr;
 	_name = name;
 }
 
@@ -14,5 +15,10 @@ void HumanB::setWeapon(Weapon& newWeapon) {
 
 
 void HumanB::attack() {
-	std::cout << _name << " attacks with their " << (*_weapon).getType() << std::endl;
+	if (_weapon != nullptr) {
+		std::cout << _name << " attacks with their " << (*_weapon).getType() << std::endl;
+	}
+	else {
+		std::cout << _name << " has no weapon." << std::endl;
+	}
 }
