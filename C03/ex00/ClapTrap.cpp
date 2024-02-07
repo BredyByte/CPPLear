@@ -1,5 +1,20 @@
 #include "ClapTrap.hpp"
 
+/*-------------- Operators --------------*/
+
+ClapTrap& ClapTrap::operator=(ClapTrap& other) {
+	if (this != &other) {
+		_name = other.getName();
+		_health = other.getHealth();
+		_energy = other.getEnergy();
+		_damage = other.getDamage();
+	}
+
+	return *this;
+}
+
+/*-------------- Constructor --------------*/
+
 ClapTrap::ClapTrap(std::string name) : _name(name), _health(10), _energy(10), _damage(0) {
 	std::cout << "Constructor called" << std::endl;
 }
@@ -8,9 +23,13 @@ ClapTrap::ClapTrap(const ClapTrap& obj) : _name(obj._name), _health(obj._health)
 	std::cout << "Copy Constructor called" << std::endl;
 }
 
+/*-------------- Destructor --------------*/
+
 ClapTrap::~ClapTrap() {
 	std::cout << "Destructor called" << std::endl;
 }
+
+/*-------------- Member Functions --------------*/
 
 std::string ClapTrap::getName() {
 	return _name;
@@ -40,12 +59,16 @@ bool ClapTrap::checkStamina() {
 	return true;
 }
 
+void ClapTrap::takeDamage(unsigned int amount) {
+	(void) amount;
+}
+
 void ClapTrap::beRepaired(unsigned int amount) {
 	if (!checkStamina()) {
 		return ;
 	}
 	if (this->getHealth() == 10) {
-		std::cout << "ClapTrap " << this->getName() << " Has max hit point amount." << std::endl;
+		std::cout << "ClapTrap " << this->getName() << " has max hit point amount." << std::endl;
 		return ;
 	}
 	--(_energy);

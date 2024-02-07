@@ -12,6 +12,9 @@ public:
 	// Desctrustor
 	~ClapTrap();
 
+	// Operators
+	ClapTrap& operator=(ClapTrap& other);
+
 	// Member Functions
 	/* Getters */
 	std::string getName();
