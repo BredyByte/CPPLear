@@ -3,9 +3,10 @@
 
 #include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap {
+class FragTrap : virtual public ClapTrap {
 	public:
 	// Constructor
+	FragTrap();
 	FragTrap(std::string name);
 
 	// Destructor
@@ -13,6 +14,7 @@ class FragTrap : public ClapTrap {
 
 	//Member Functions
 	void highFivesGuys();
+	void printMessage(std::string message, std::string flag, std::string target);
 
 	private:
 };
