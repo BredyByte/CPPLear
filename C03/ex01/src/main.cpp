@@ -6,6 +6,10 @@ int main() {
 	ScavTrap b("Davyd");
 
 	a = b;
+	a.attack(b.getName());
+	a.beRepaired(10);
+	a.takeDamage(100);
+	a.takeDamage(10);
 	a.guardGate();
 	return 0;
 }

@@ -7,8 +7,8 @@
 class ClapTrap {
 public:
 	// Constructors
+	ClapTrap();
 	ClapTrap(std::string name);
-	ClapTrap(std::string name, int health, int energy, int damage);
 	ClapTrap(const ClapTrap &obj);
 
 	// Desctrustor
@@ -24,6 +24,7 @@ public:
 	int			getEnergy();
 	int			getDamage();
 
+	void printMessage(std::string message, std::string flag, std::string target);
 	bool checkStamina();
 	void attack(const std::string& target);
 	void takeDamage(unsigned int amount);
