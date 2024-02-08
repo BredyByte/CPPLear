@@ -1,20 +1,22 @@
 #ifndef DIAMONDTRAP_HPP
-#define DIANONDTRAP_HPP
+#define DIAMONDTRAP_HPP
 
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
-#include "ClapTrap.hpp"
 
-class DiamondTrap : public ScavTrap, public FragTrap, public ClapTrap {
+class DiamondTrap : public ScavTrap, public FragTrap {
 	public:
 	// Constructor
+	DiamondTrap();
 	DiamondTrap(std::string name);
 
 	// Destructor
 	~DiamondTrap();
+
 	// Member Functions
 	void whoAmI();
-
+	void printMessage(std::string message, std::string flag, std::string target);
+	void guardGate();
 	private:
 
 	std::string _name;

@@ -1,23 +1,25 @@
 NAME = program
 
-SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
+OBJ_PATH = obj
+SRC = src/
 
-OBJS = $(SRCS:.cpp=.o)
+SRCS = $(SRC)main.cpp $(SRC)ClapTrap.cpp $(SRC)ScavTrap.cpp $(SRC)FragTrap.cpp $(SRC)DiamondTrap.cpp
 
+OBJS = $(addprefix obj/,$(notdir $(SRCS:.cpp=.o)))
 CFLAG = -Wall -Wextra -Werror -std=c++98
-
-HEADERS = -I ./
+HEADERS = -I ./inc
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	clang++ $(CFLAG) $(HEADERS) $(OBJS) -o $(NAME)
+	@clang++ $(CFLAG) $(HEADERS) $^ -o $@
 
-%.o: %.cpp
+$(OBJ_PATH)/%.o: $(SRC)%.cpp
+	@mkdir -p $(@D)
 	clang++ $(CFLAG) $(HEADERS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	rm -rf $(OBJ_PATH)
 
 fclean: clean
 	rm -f $(NAME)

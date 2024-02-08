@@ -15,12 +15,16 @@ ClapTrap& ClapTrap::operator=(ClapTrap& other) {
 
 /*-------------- Constructor --------------*/
 
+ClapTrap::ClapTrap() : _name("NameLess"), _health(10), _energy(10), _damage(0) {
+	std::cout << "ClapTrap Constructor " << this->_name << std::endl;
+}
+
 ClapTrap::ClapTrap(std::string name) : _name(name), _health(10), _energy(10), _damage(0) {
-	std::cout << "Constructor called" << std::endl;
+	std::cout << "ClapTrap Constructor " << this->_name << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& obj) : _name(obj._name), _health(obj._health), _energy(obj._energy), _damage(obj._damage) {
-	std::cout << "Copy Constructor called" << std::endl;
+	std::cout << "ClapTrap Copy Constructor called" << std::endl;
 }
 
 /*-------------- Destructor --------------*/
