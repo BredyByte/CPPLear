@@ -24,7 +24,7 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _health(10), _energy(10), _d
 }
 
 ClapTrap::ClapTrap(const ClapTrap& obj) : _name(obj._name), _health(obj._health), _energy(obj._energy), _damage(obj._damage) {
-	std::cout << "ClapTrap Copy Constructor called" << std::endl;
+	std::cout << "ClapTrap Copy Constructor" << this->_name << std::endl;
 }
 
 /*-------------- Destructor --------------*/
@@ -36,48 +36,69 @@ ClapTrap::~ClapTrap() {
 /*-------------- Member Functions --------------*/
 
 std::string ClapTrap::getName() {
-	return _name;
+	return this->_name;
 }
 
 int ClapTrap::getHealth() {
-	return _health;
+	return this->_health;
 }
 
 int ClapTrap::getEnergy() {
-	return _energy;
+	return this->_energy;
 }
 
 int ClapTrap::getDamage() {
-	return _damage;
+	return this->_damage;
+}
+
+void ClapTrap::printMessage(std::string message, std::string flag, std::string target) {
+	if (message.empty() && flag == "ATTACK") {
+		std::cout << "ClapTrap " << this->_name << " attacks " << ((!target.empty()) ? target : "NULL") << ", causing " << this->_damage << " points of damage" << std::endl;
+	}
+	else if (message.empty() && flag == "REPARE") {
+		std::cout << "ClapTrap " << this->_name << " repaired itself, and now has " << this->_health << " points of health" << std::endl;
+	}
+	else if (message.empty() && flag == "TAKEDAMAGE") {
+		std::cout << "ClapTrap " << this->_name << " has taken damage, and now has " << this->_health << " points of health" << std::endl;
+	}
+	else {
+		std::cout << "ClapTrap " << this->_name << (!(message.empty()) ? message : "") << std::endl;
+	}
 }
 
 bool ClapTrap::checkStamina() {
-	if (this->getHealth() == 0) {
-		std::cout << "ClapTrap " << this->getName() << " Is dead :(" << std::endl;
+	if (this->getHealth() <= 0) {
+		printMessage(" is dead :(", "", "");
 		return false;
 	}
 	if (this->getEnergy() == 0) {
-		std::cout << "ClapTrap " << this->getName() << " Hasn't enough energy :(" << std::endl;
+		printMessage(" Hasn't enough energy :(", "", "");
 		return false;
 	}
 	return true;
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
-	(void) amount;
+	if (!checkStamina()) {
+		return ;
+	}
+	--(_energy);
+	_health -= amount;
+	if (getHealth() <= 0) {
+		printMessage(" has died.", "", "");
+	}
+	else {
+		printMessage("", "TAKEDAMAGE", "");
+	}
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
 	if (!checkStamina()) {
 		return ;
 	}
-	if (this->getHealth() == 10) {
-		std::cout << "ClapTrap " << this->getName() << " has max hit point amount." << std::endl;
-		return ;
-	}
 	--(_energy);
-	_health = (getHealth() + amount >= 10) ? 10 : getHealth() + amount;
-	std::cout << "ClapTrap " << this->getName() << " repaired itself, and now has " << this->getHealth() << " points of health" << std::endl;
+	_health += amount;
+	printMessage("", "REPARE", "");
 }
 
 void ClapTrap::attack(const std::string& target) {
@@ -85,5 +106,5 @@ void ClapTrap::attack(const std::string& target) {
 		return ;
 	}
 	--(_energy);
-	std::cout << "ClapTrap " << this->getName() << " attacks " << target << ", causing " << this->getDamage() << " points of damage" << std::endl;
+	printMessage("", "ATTACK", target);
 }
