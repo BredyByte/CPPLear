@@ -13,6 +13,7 @@ class FragTrap : virtual public ClapTrap {
 	~FragTrap();
 
 	//Member Functions
+	FragTrap &operator=(const FragTrap &other);
 	void highFivesGuys();
 	void printMessage(std::string message, std::string flag, std::string target);
 

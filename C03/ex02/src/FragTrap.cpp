@@ -1,5 +1,14 @@
 #include "FragTrap.hpp"
 
+FragTrap	&FragTrap::operator=(const FragTrap &other)
+{
+	this->_name = other._name;
+	this->_health = other._health;
+	this->_energy = other._energy;
+	this->_damage = other._damage;
+	return (*this);
+}
+
 FragTrap::FragTrap() : ClapTrap() {
 	std::cout << "FragTrap Constructor " << this->_name << std::endl;
 }

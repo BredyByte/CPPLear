@@ -13,6 +13,7 @@ public:
 	~ScavTrap();
 
 	// Member functions
+	ScavTrap &operator=(const ScavTrap &other);
 	void printMessage(std::string message, std::string flag, std::string target);
 	void guardGate();
 

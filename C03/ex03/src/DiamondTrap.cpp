@@ -1,5 +1,14 @@
 #include "DiamondTrap.hpp"
 
+DiamondTrap	&DiamondTrap::operator=(const DiamondTrap &other)
+{
+	this->_health = other._health;
+	this->_name = other._name;
+	this->_energy = other._energy;
+	this->_damage = other._damage;
+	return (*this);
+}
+
 DiamondTrap::DiamondTrap() : ScavTrap(), FragTrap(), _name("Default") {
 	ClapTrap::_name = _name + "_clap_name";
 	std::cout << "DiamondTrap Constructor " << this->_name << std::endl;

@@ -1,9 +1,10 @@
 #include "DiamondTrap.hpp"
 
 int main() {
-	DiamondTrap a;
+	DiamondTrap a("DIAMOND");
+	DiamondTrap b("DIAMOND2");
 
-
+	a = b;
 	a.attack("SOMEONE");
 	a.takeDamage(1);
 	a.takeDamage(1);

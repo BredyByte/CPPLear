@@ -14,10 +14,11 @@ class DiamondTrap : public ScavTrap, public FragTrap {
 	~DiamondTrap();
 
 	// Member Functions
+	DiamondTrap &operator=(const DiamondTrap &other);
 	void whoAmI();
 	void printMessage(std::string message, std::string flag, std::string target);
 	void guardGate();
-	
+
 	private:
 
 	std::string _name;

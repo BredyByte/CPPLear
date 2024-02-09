@@ -11,9 +11,10 @@ public:
 
 	// Destructor
 	~ScavTrap();
-	void printMessage(std::string message, std::string flag, std::string target);
 
 	// Member functions
+	ScavTrap &operator=(const ScavTrap &other);
+	void printMessage(std::string message, std::string flag, std::string target);
 	virtual void guardGate();
 
 private:

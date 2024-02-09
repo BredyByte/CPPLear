@@ -1,5 +1,14 @@
 #include "ScavTrap.hpp"
 
+ScavTrap	&ScavTrap::operator=(const ScavTrap &other)
+{
+	this->_name = other._name;
+	this->_health = other._health;
+	this->_energy = other._energy;
+	this->_damage = other._damage;
+	return (*this);
+}
+
 ScavTrap::ScavTrap() : ClapTrap() {
 	std::cout << "ScavTrap Constructor " << this->_name << std::endl;
 }

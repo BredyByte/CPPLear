@@ -2,9 +2,11 @@
 #include "ScavTrap.hpp"
 
 int main() {
-	ClapTrap a("Pablo");
-	ScavTrap b;
+	ScavTrap a("Pablo");
+	ScavTrap g("LOL");
+	ScavTrap b = a;
 
+	a = g;
 	a.attack(b.getName());
 	b.attack(a.getName());
 	a.beRepaired(10);
