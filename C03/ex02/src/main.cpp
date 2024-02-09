@@ -3,14 +3,17 @@
 #include "FragTrap.hpp"
 
 int main() {
-	FragTrap a("Pablo");
+	ClapTrap a("Pablo");
 	FragTrap b("Davyd");
-	ScavTrap c("Maria");
+	ScavTrap c;
 
-	a = b;
 	c.guardGate();
 	a.attack(b.getName());
-	a.highFivesGuys();
+	b.attack(a.getName());
+	c.attack(a.getName());
+	b.highFivesGuys();
+	b.takeDamage(123);
+	b.highFivesGuys();
 	c.takeDamage(123);
 	c.beRepaired(123);
 	return 0;
