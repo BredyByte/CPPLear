@@ -26,8 +26,3 @@ AMateria& AMateria::operator=(AMateria& other) {
 std::string const& AMateria::getType() const {
 	return _type;
 }
-
-AMateria* AMateria::clone() const
-{
-    return (AMateria*)this;
-}

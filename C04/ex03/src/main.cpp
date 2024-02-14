@@ -17,6 +17,8 @@ int main() {
 	me->equip(src->createMateria("cure"));
 	me->unequip(0);
 	ICharacter* bob = new Character("bob");
+	bob->equip(Character::getWorldStack(0));
+	bob->use(0, *bob);
 	me->equip(src->createMateria("cure"));
 	me->use(0, *bob);
 	me->use(1, *bob);
