@@ -31,9 +31,3 @@ AMateria* AMateria::clone() const
 {
     return (AMateria*)this;
 }
-
-void AMateria::use(ICharacter& target)
-{
-	(void) target;
-    std::cout << "Some Message" << std::endl;
-}

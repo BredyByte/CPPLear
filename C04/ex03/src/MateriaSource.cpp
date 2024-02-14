@@ -35,10 +35,14 @@ MateriaSource& MateriaSource::operator=(const MateriaSource& other) {
 }
 
 void MateriaSource::learnMateria(AMateria* mater) {
-	if (_curr < 4) {
-		this->_materias[_curr] = mater->clone();
-		this->_curr++;
+	if (_curr >= 4) {
+		std::cout << "MateriaSource is full" << std::endl;
+		delete mater;
+		return;
 	}
+
+	this->_materias[_curr] = mater->clone();
+	this->_curr++;
 	delete mater;
 }
 

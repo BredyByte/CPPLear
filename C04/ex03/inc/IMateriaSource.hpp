@@ -2,7 +2,6 @@
 #define IMATERIASOURCE_HPP
 #include "AMateria.hpp"
 
-
 class IMateriaSource {
 public:
 	virtual ~IMateriaSource() {};
