@@ -1,6 +1,7 @@
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 #include <iostream>
+#include <stdexcept>
 
 class Bureaucrat {
 private:
@@ -17,6 +18,20 @@ public:
 	int getGrade() const;
 	void incGrade();
 	void decrGrade();
+
+	class GradeTooHighException : public std::exception {
+	public:
+		const char* what() const throw () {
+			return "Error: Grade is too high";
+		}
+	};
+
+	class GradeTooLowException : public std::exception {
+	public:
+		const char* what() const throw () {
+			return "Error: Grade is too low";
+		}
+	};
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj);

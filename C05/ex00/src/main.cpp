@@ -1,10 +1,30 @@
 #include "Bureaucrat.hpp"
 
 int main() {
-	Bureaucrat a("Davyd", 145);
+	try {
+		Bureaucrat a("Davyd", 150);
+		a.incGrade();
+		a.incGrade();
+		a.incGrade();
+		a.incGrade();
+		a.decrGrade();
+		std::cout << a << std::endl;
+	}
+	catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
 
-	std::cout << a << std::endl;
-	a.incGrade();
-	std::cout << a << std::endl;
+	try {
+		Bureaucrat p("Pablo", 1);
+		p.incGrade();
+		p.incGrade();
+		p.decrGrade();
+		p.decrGrade();
+		p.decrGrade();
+		std::cout << p << std::endl;
+	}
+	catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
 	return 0;
 }

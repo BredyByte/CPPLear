@@ -5,8 +5,13 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj) {
     return os;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade) {
-
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade){
+	if (_grade < 1) {
+		throw Bureaucrat::GradeTooHighException();
+	}
+	else if (_grade > 150) {
+		throw Bureaucrat::GradeTooLowException();
+	}
 }
 
 Bureaucrat::Bureaucrat() : _name("Deff"), _grade(150) {
@@ -38,8 +43,14 @@ int Bureaucrat::getGrade() const {
 
 void Bureaucrat::incGrade() {
 	_grade--;
+	if (_grade < 1) {
+		throw Bureaucrat::GradeTooHighException();
+	}
 }
 
 void Bureaucrat::decrGrade() {
 	_grade++;
+	if (_grade > 150) {
+		throw Bureaucrat::GradeTooLowException();
+	}
 }
