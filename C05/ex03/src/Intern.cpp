@@ -19,26 +19,29 @@ Intern::~Intern() {
 
 }
 
-AForm& Intern::makeForm(std::string name, std::string target) {
-	(void) target;
-	(void) name;
-	AForm* (Intern::*complain_ptr[3])(std::string target) = {&Intern::makePresidentialPardonForm, &Intern::makeRobotomyRequestForm, &Intern::makeShrubberyCreationForm};
-	for(int i = 0; formNames[i] == name; i++) {
-
+AForm* Intern::makeForm(std::string name, std::string target) {
+	FuncPtr f[] = {&Intern::func0, &Intern::func1, &Intern::func2, &Intern::func3};
+	int i = 0;
+	while (formNames[i] != name && i < arrSize) {
+		i++;
 	}
-	return *(this->*complain_ptr[i])(target);
+	return (this->*f[i % arrSize])(target);
 }
 
-
-
-AForm* Intern::makePresidentialPardonForm(std::string target) {
+AForm* Intern::func0(std::string target) {
+	(void) target;
+	throw Intern::UnknownFormException();
 	return new PresidentialPardonForm(target);
 }
 
-AForm* Intern::makeRobotomyRequestForm(std::string target) {
-	return *(new RobotomyRequestForm(target));
+AForm* Intern::func1(std::string target) {
+	return new PresidentialPardonForm(target);
 }
 
-AForm* Intern::makeShrubberyCreationForm(std::string target) {
-	return *(new ShrubberyCreationForm(target));
+AForm* Intern::func2(std::string target) {
+	return new RobotomyRequestForm(target);
+}
+
+AForm* Intern::func3(std::string target) {
+	return new ShrubberyCreationForm(target);
 }
