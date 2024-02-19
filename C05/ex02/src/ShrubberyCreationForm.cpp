@@ -1,0 +1,68 @@
+#include "ShrubberyCreationForm.hpp"
+
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137), _target("Default target") {
+
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137), _target(target) {
+
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm& other) : AForm(other) {
+
+}
+
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm& other) {
+	if (this != &other) {
+		AForm::operator=(other);
+	}
+	return *this;
+}
+
+ShrubberyCreationForm::~ShrubberyCreationForm() {
+
+}
+
+std::string printTreeASCII() {
+    std::string treeASCII =
+        "            .        +          .      .          .\n"
+        "     .            _        .                    .\n"
+        "  ,              /;-._,-.____        ,-----.__\n"
+        " ((        .    (_:#::_.:::. `-._   /:, /-._, `._,\n"
+        "  `                 \\   _|`\"=:_::.`.);  \\ __/ /\n"
+        "                      ,    `./  \\:. `.   )==-'  .\n"
+        "    .      ., ,-=-.  ,\\, +#./`   \\:.  / /           .\n"
+        ".           \\/:/`-' , ,\\ '` ` `   ): , /_  -o\n"
+        "       .    /:+- - + +- : :- + + -:'  /(o-) \\)     .\n"
+        "  .      ,=':  \\    ` `/` ' , , ,:' `'--\".--\"---._/`7\n"
+        "   `.   (    \\: \\,-._` ` + '\\, ,\"   _,--._,---\":.__/\n"
+        "              \\:  `  X` _| _,\\/\\'   .-'\n"
+        ".               \":._:`\\____  /:'  /      .           .\n"
+        "                    \\::.  :\\/:'  /              +\n"
+        "   .                 `.:.  /:'  }      .\n"
+        "           .           ):_(:;   \\           .\n"
+        "                      /:. _/ ,  |\n"
+        "                   . (|::.     ,`                  .\n"
+        "     .                |::.    \\{\\\n"
+        "                      |:::\\\\  \\ `.\n"
+        "                      |:::(\\    |\n"
+        "              O       |:::/{ }  |                  (o\n"
+        "               )  ___/#\\::`/ (O \"==._____   O, (O  /`\n"
+        "          ~~~w/w~\"~~,\\\\` `:/,-(~`\"~~~~~~~~\"~o~\\~/~w|/~\n"
+        "dew   ~~~~~~~~~~~~~~~~~~~~~~~\\\\W~~~~~~~~~~~~\\|/~~)";
+    return treeASCII;
+}
+
+void ShrubberyCreationForm::execute(Bureaucrat const & executor) {
+	(void) executor;
+	const std::string fileName = this->_target + "_shrubbery";
+    std::ofstream outputFile(fileName);
+
+	if (outputFile.is_open()) {
+		outputFile << printTreeASCII() << std::endl;
+		outputFile.close();
+		std::cout << "File '" << fileName << "' created successfully." << std::endl;
+	} else {
+		std::cerr << "Error: Unable to create file '" << fileName << "'." << std::endl;
+	}
+}
