@@ -1,7 +1,7 @@
 #include "AForm.hpp"
 
 std::ostream& operator<<(std::ostream& os, AForm& obj) {
-    os << "Form: " << obj.getName() << ". Min required grade to sign it: " << obj.getGradeToSign() << ". Min required grade to exeute it: " <<  obj.getGradeToExecute() << ". With current status: " << ((obj.formIsSigned()) ? "Signed" : "Unsigned");
+    os << "Form: " << obj.getName() << ". Min required grade to sign it: " << obj.getGradeToSign() << ". Min required grade to execute it: " <<  obj.getGradeToExecute() << ". With current status: " << ((obj.formIsSigned()) ? "Signed" : "Unsigned");
     return os;
 }
 
@@ -67,8 +67,8 @@ bool AForm::formIsSigned() {
 	return _isSigned;
 }
 
-void AForm::isSignedSetter() {
-	_isSigned = true;
+void AForm::isSignedSetter(bool val) {
+	_isSigned = val;
 }
 
 void AForm::cantExecuteSignExeptPrint(Bureaucrat& obj) {
@@ -78,7 +78,7 @@ void AForm::cantExecuteSignExeptPrint(Bureaucrat& obj) {
 
 void AForm::signAndExec(Bureaucrat& obj) {
 	if (obj.getGrade() <= this->getGradeToSign() && !this->formIsSigned()) {
-		isSignedSetter();
+		isSignedSetter(true);
 		obj.signForm(this->getName());
 	}
 	if (this->formIsSigned()) {

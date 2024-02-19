@@ -23,7 +23,7 @@ public:
 	int					getGradeToSign();
 	int					getGradeToExecute();
 	bool				formIsSigned();
-	void				isSignedSetter();
+	void				isSignedSetter(bool val);
 
 	void				cantExecuteSignExeptPrint(Bureaucrat& obj);
 	void				signAndExec(Bureaucrat& obj);

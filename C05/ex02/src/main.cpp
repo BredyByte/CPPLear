@@ -9,10 +9,10 @@ int main() {
 		Bureaucrat d("Davyd", 140);
 		std::cout << d << std::endl;
 
-		Bureaucrat p("Pablo", 3);
+		Bureaucrat p("Pablo", 45);
 		std::cout << p << std::endl;
 
-		ShrubberyCreationForm f("home");
+		RobotomyRequestForm f("home");
 		f.signAndExec(p);
 		std::cout << f << std::endl;
 

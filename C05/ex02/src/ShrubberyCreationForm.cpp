@@ -8,19 +8,23 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubb
 
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm& other) : AForm(other) {
-
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm& other) : AForm(other.getName(), other.getGradeToSign(), other.getGradeToExecute()) {
+    this->_target = other.getTarget();
+    this->isSignedSetter(other.formIsSigned());
 }
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm& other) {
-	if (this != &other) {
-		AForm::operator=(other);
-	}
+    this->_target = other.getTarget();
+    this->isSignedSetter(other.formIsSigned());
 	return *this;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {
 
+}
+
+std::string ShrubberyCreationForm::getTarget() {
+    return _target;
 }
 
 std::string printTreeASCII() {
