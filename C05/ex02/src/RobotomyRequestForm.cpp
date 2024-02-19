@@ -23,11 +23,11 @@ RobotomyRequestForm::~RobotomyRequestForm() {
 
 }
 
-std::string RobotomyRequestForm::getTarget() {
+std::string RobotomyRequestForm::getTarget() const {
     return _target;
 }
 
-void RobotomyRequestForm::execute(Bureaucrat const & executor) {
+void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
 	(void) executor;
 	srand(time(0));
 	std::cout << std::endl << "Makes some drilling noises..." << std::endl;

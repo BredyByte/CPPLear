@@ -23,7 +23,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {
 
 }
 
-std::string ShrubberyCreationForm::getTarget() {
+std::string ShrubberyCreationForm::getTarget() const {
     return _target;
 }
 
@@ -57,7 +57,7 @@ std::string printTreeASCII() {
     return treeASCII;
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const & executor) {
+void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 	(void) executor;
 	const std::string fileName = this->_target + "_shrubbery";
     std::ofstream outputFile(fileName);
@@ -65,8 +65,8 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) {
 	if (outputFile.is_open()) {
 		outputFile << printTreeASCII() << std::endl;
 		outputFile.close();
-		std::cout << "File '" << fileName << "' created successfully." << std::endl;
+		std::cout << "\nFile '" << fileName << "' created successfully.\n" << std::endl;
 	} else {
-		std::cerr << "Error: Unable to create file '" << fileName << "'." << std::endl;
+		std::cerr << "\nError: Unable to create file '" << fileName << "'.\n" << std::endl;
 	}
 }

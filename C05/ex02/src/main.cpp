@@ -9,10 +9,10 @@ int main() {
 		Bureaucrat d("Davyd", 140);
 		std::cout << d << std::endl;
 
-		Bureaucrat p("Pablo", 45);
+		Bureaucrat p("Pablo", 1);
 		std::cout << p << std::endl;
 
-		RobotomyRequestForm f("home");
+		ShrubberyCreationForm f("home");
 		f.signAndExec(p);
 		std::cout << f << std::endl;
 
@@ -20,6 +20,5 @@ int main() {
 	catch (std::exception& e) {
 		std::cerr << e.what() << std::endl;
 	}
-
 	return 0;
 }
