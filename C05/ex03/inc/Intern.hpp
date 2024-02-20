@@ -7,28 +7,29 @@
 
 class Intern {
 public:
-    static const int arrSize = 4;
-    static const std::string formNames[arrSize];
-
     Intern();
     Intern(Intern& other);
     Intern& operator=(Intern& other);
     ~Intern();
 
-    AForm* makeForm(std::string name, std::string target);
-    AForm* func1(std::string target);
-    AForm* func2(std::string target);
-    AForm* func3(std::string target);
-	AForm* func0(std::string target);
+    AForm* makeForm(const std::string& name, const std::string& target) const;
 
     class UnknownFormException : public std::exception {
-        virtual const char* what() const throw() {
+    public:
+        const char* what() const throw() {
             return "Unknown form name.";
         }
     };
-private:
-    typedef AForm* (Intern::*FuncPtr)(std::string target);
-    static FuncPtr functionPointers[arrSize];
-};
 
+private:
+    static const std::string formNames[];
+    static const int arrSize;
+
+    typedef AForm* (Intern::*FuncPtr)(const std::string& target) const;
+    static FuncPtr functionPointers[];
+
+    AForm* form3(const std::string& target) const;
+    AForm* form2(const std::string& target) const;
+    AForm* form1(const std::string& target) const;
+};
 #endif

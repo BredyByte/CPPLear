@@ -1,6 +1,8 @@
 #include "Intern.hpp"
 
-const std::string Intern::formNames[arrSize] = {"Unknown", "PresidentialPardonForm", "RobotomyRequestForm", "ShrubberyCreationForm"};
+const std::string Intern::formNames[] = {"form1", "form2", "form3"};
+const int Intern::arrSize = 3;
+
 
 Intern::Intern() {
 
@@ -19,29 +21,30 @@ Intern::~Intern() {
 
 }
 
-AForm* Intern::makeForm(std::string name, std::string target) {
-	FuncPtr f[] = {&Intern::func0, &Intern::func1, &Intern::func2, &Intern::func3};
-	int i = 0;
-	while (formNames[i] != name && i < arrSize) {
-		i++;
-	}
-	return (this->*f[i % arrSize])(target);
+AForm* Intern::makeForm(const std::string& name, const std::string& target) const {
+    for (int i = 0; i < arrSize; ++i) {
+        if (formNames[i] == name) {
+            std::cout << "Intern creates Form: " << name << std::endl;
+            return (this->*functionPointers[i])(target);
+        }
+    }
+    throw UnknownFormException();
 }
 
-AForm* Intern::func0(std::string target) {
-	(void) target;
-	throw Intern::UnknownFormException();
+AForm* Intern::form1(const std::string& target) const {
 	return new PresidentialPardonForm(target);
 }
 
-AForm* Intern::func1(std::string target) {
-	return new PresidentialPardonForm(target);
-}
-
-AForm* Intern::func2(std::string target) {
+AForm* Intern::form2(const std::string& target) const {
 	return new RobotomyRequestForm(target);
 }
 
-AForm* Intern::func3(std::string target) {
+AForm* Intern::form3(const std::string& target) const {
 	return new ShrubberyCreationForm(target);
 }
+
+Intern::FuncPtr Intern::functionPointers[] = {
+    &Intern::form1,
+    &Intern::form2,
+    &Intern::form3
+};
