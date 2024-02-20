@@ -10,12 +10,10 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("Pres
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm& other) : AForm(other.getName(), other.getGradeToSign(), other.getGradeToExecute()) {
     this->_target = other.getTarget();
-    this->isSignedSetter(other.formIsSigned());
 }
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(PresidentialPardonForm& other) {
     this->_target = other.getTarget();
-    this->isSignedSetter(other.formIsSigned());
 	return *this;
 }
 
@@ -27,7 +25,7 @@ std::string PresidentialPardonForm::getTarget() const {
     return _target;
 }
 
-void PresidentialPardonForm::execute(Bureaucrat const & executor) const {
-	(void) executor;
+void PresidentialPardonForm::_execute(Bureaucrat const & obj) const {
+    (void) obj;
 	std::cout << std::endl << this->getTarget() << " has been pardoned by Zaphod Beeblebrox" << std::endl << std::endl;
 }

@@ -10,12 +10,10 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubb
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm& other) : AForm(other.getName(), other.getGradeToSign(), other.getGradeToExecute()) {
     this->_target = other.getTarget();
-    this->isSignedSetter(other.formIsSigned());
 }
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm& other) {
     this->_target = other.getTarget();
-    this->isSignedSetter(other.formIsSigned());
 	return *this;
 }
 
@@ -57,10 +55,10 @@ std::string printTreeASCII() {
     return treeASCII;
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
-	(void) executor;
+void ShrubberyCreationForm::_execute(Bureaucrat const & obj) const {
+    (void) obj;
 	const std::string fileName = this->_target + "_shrubbery";
-    std::ofstream outputFile(fileName);
+    std::ofstream outputFile(fileName.c_str());
 
 	if (outputFile.is_open()) {
 		outputFile << printTreeASCII() << std::endl;

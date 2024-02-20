@@ -10,12 +10,10 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRe
 
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm& other) : AForm(other.getName(), other.getGradeToSign(), other.getGradeToExecute()) {
     this->_target = other.getTarget();
-    this->isSignedSetter(other.formIsSigned());
 }
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(RobotomyRequestForm& other) {
     this->_target = other.getTarget();
-    this->isSignedSetter(other.formIsSigned());
 	return *this;
 }
 
@@ -27,8 +25,8 @@ std::string RobotomyRequestForm::getTarget() const {
     return _target;
 }
 
-void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
-	(void) executor;
+void RobotomyRequestForm::_execute(Bureaucrat const & obj) const {
+	(void) obj;
 	srand(time(0));
 	std::cout << std::endl << "Makes some drilling noises..." << std::endl;
 	bool success = (rand() % 100) < 50;

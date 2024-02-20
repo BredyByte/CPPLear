@@ -10,7 +10,7 @@ int main() {
 	try {
 		Intern intern;
 		form = intern.makeForm("form2", "target");
-		Bureaucrat lala("Lalita", 150);
+		Bureaucrat lala("Lalita", 2);
 		form->signAndExec(lala);
 
 		delete form;

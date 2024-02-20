@@ -67,10 +67,6 @@ bool AForm::formIsSigned() {
 	return _isSigned;
 }
 
-void AForm::isSignedSetter(bool val) {
-	_isSigned = val;
-}
-
 void AForm::cantExecuteSignExeptPrint(Bureaucrat& obj) {
 	std::cout << "Bureaucrat " << obj.getName() << " can't" << ((this->formIsSigned()) ? " execute " : " sign ") << "the Form:" << this->getName() << ", Bureaucrat's grade is " << obj.getGrade() << ", form's min. required grade to" << ((this->formIsSigned()) ? " execute " : " sign ") <<  "is " << this->getGradeToExecute() << std::endl;
 	throw AForm::GradeTooLowException();
@@ -78,13 +74,13 @@ void AForm::cantExecuteSignExeptPrint(Bureaucrat& obj) {
 
 void AForm::signAndExec(Bureaucrat& obj) {
 	if (obj.getGrade() <= this->getGradeToSign() && !this->formIsSigned()) {
-		isSignedSetter(true);
+		this->_isSigned = true;
 		obj.signForm(this->getName());
 	}
 	if (this->formIsSigned()) {
 		if (obj.getGrade() <= this->getGradeToExecute()) {
 			obj.executeForm(this->getName());
-			this->execute(obj);
+			this->_execute(obj);
 			return ;
 		}
 	}
