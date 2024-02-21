@@ -6,7 +6,7 @@
 #include "Intern.hpp"
 
 int main() {
-	AForm* form;
+	AForm* form = NULL;
 	try {
 		Intern intern;
 		form = intern.makeForm("form2", "target");
