@@ -68,7 +68,7 @@ void ScalarConverter::convertToFloat(const std::string& str) {
 	std::istringstream iss(str);
 	float value;
 	if (iss >> value) {
-		std::cout << "float: " << value << ((str.find('.') != std::string::npos) ? "f" : ".0f") << std::endl;
+		std::cout << "float: " << value << ((value == static_cast<int>(value)) ? ".0f" : "f") << std::endl;
 		return ;
 	}
 	std::cout << "Invalid conversion to float" << std::endl;
@@ -90,7 +90,7 @@ void ScalarConverter::convertToDouble(const std::string& str) {
 	std::istringstream iss(str);
 	double value;
 	if (iss >> value) {
-		std::cout << "double: " << value << ((str.find('.') != std::string::npos) ? "" : ".0") << std::endl;
+		std::cout << "double: " << value << ((value == static_cast<int>(value)) ? ".0" : "") << std::endl;
 		return ;
 	}
 	std::cout << "Invalid conversion to double" << std::endl;
