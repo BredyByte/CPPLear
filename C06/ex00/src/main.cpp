@@ -5,11 +5,6 @@ int main(int argc, char** argv) {
 		std::cerr << "Usage: ./convert [value]" << std::endl;
 		return (1);
 	}
-	try {
-		ScalarConverter::convert(argv[1]);
-	}
-	catch (std::exception& e) {
-		std::cerr << e.what() << std::endl;
-	}
+	ScalarConverter::convert(argv[1]);
 	return 0;
 }
