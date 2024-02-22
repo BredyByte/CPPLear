@@ -90,7 +90,7 @@ void ScalarConverter::convertToDouble(const std::string& str) {
 	std::istringstream iss(str);
 	double value;
 	if (iss >> value) {
-		std::cout << "double: " << value << ((value == static_cast<int>(value)) ? ".0" : "") << std::endl;
+		std::cout << "double: " << static_cast<double>(value) << std::endl;
 		return ;
 	}
 	std::cout << "Invalid conversion to double" << std::endl;
