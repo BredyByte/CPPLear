@@ -48,22 +48,25 @@ void ScalarConverter::convertToInt(const std::string& str) {
 	std::cout << "int: " << mediores << std::endl;
 }
 
-
 void ScalarConverter::convertToFloat(const std::string& str) {
-	if (str == "nan" || str == "+inf" || str == "+inf" || str == "-inf" || str == "-inff") {
-		std::cout << "float: " << str << "f" << std::endl;
-		return ;
+	for (int i = 0; i < typesSize; i++) {
+		if (str == typeNames[i]){
+			std::cout << "float: " << (str+"f") << std::endl;
+			return ;
+		}
+		else if (str == typeNames[i] + "f") {
+			std::cout << "float: " << str << std::endl;
+			return ;
+		}
 	}
-	if (str == "nanf" || str == "+inff" || str == "+inff" || str == "-inff" || str == "-inff") {
-		std::cout << "float: " << str << std::endl;
-		return ;
-	}
+
 	if (str.size() == 1 && std::isdigit(str[0])) {
 		std::cout << "float: " << str << ".0f" << std::endl;
 		return ;
 	}
+
 	std::istringstream iss(str);
-	int value;
+	float value;
 	if (iss >> value) {
 		std::cout << "float: " << value << ((str.find('.') != std::string::npos) ? "f" : ".0f") << std::endl;
 		return ;
@@ -72,10 +75,22 @@ void ScalarConverter::convertToFloat(const std::string& str) {
 }
 
 void ScalarConverter::convertToDouble(const std::string& str) {
+	for (int i = 0; i < typesSize; i++) {
+		if (str == typeNames[i]){
+			std::cout << "double: " << str << std::endl;
+			return ;
+		}
+	}
+
+	if (str.size() == 1 && std::isdigit(str[0])) {
+		std::cout << "double: " << str << ".0" << std::endl;
+		return ;
+	}
+
 	std::istringstream iss(str);
 	double value;
 	if (iss >> value) {
-		std::cout << "double: " << value << std::endl;
+		std::cout << "double: " << value << ((str.find('.') != std::string::npos) ? "" : ".0") << std::endl;
 		return ;
 	}
 	std::cout << "Invalid conversion to double" << std::endl;
