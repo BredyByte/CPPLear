@@ -1,9 +1,9 @@
-NAME = convert
+NAME = program
 
 OBJ_PATH = obj
 SRC = src/
 
-SRCS = $(SRC)main.cpp $(SRC)ScalarConverter.cpp
+SRCS = $(SRC)main.cpp $(SRC)Serializer.cpp
 
 OBJS = $(addprefix obj/,$(notdir $(SRCS:.cpp=.o)))
 CFLAG = -Wall -Wextra -Werror -std=c++98
