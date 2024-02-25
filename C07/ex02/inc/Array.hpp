@@ -5,6 +5,8 @@
 #include <stdexcept>
 #include <string>
 #include <sstream>
+#include <ctime>
+#include <cstdlib>
 
 template <class T>
 class Array {
@@ -18,6 +20,10 @@ class Array {
 		Array(const Array& other);
 		Array& operator=(const Array& other);
 		virtual ~Array();
+
+		T& operator[](unsigned int index);
+		const T& operator[](unsigned int index) const;
+		int	size();
 };
 
 #include "../src/Array.tpp"

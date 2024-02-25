@@ -3,7 +3,7 @@ NAME = program
 OBJ_PATH = obj
 SRC = src/
 
-SRCS = $(SRC)main.cpp $(SRC)Array.tpp
+SRCS = $(SRC)main.cpp 
 
 OBJS = $(addprefix obj/,$(notdir $(SRCS:.cpp=.o)))
 CFLAG = -Wall -Wextra -Werror -std=c++98

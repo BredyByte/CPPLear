@@ -48,5 +48,30 @@ Array<T>::~Array() {
 	delete[] m_array;
 }
 
+template <class T>
+int Array<T>::size() {
+    return m_nSize;
+}
+
+template <class T>
+T& Array<T>::operator[](unsigned int index) {
+    if (index < m_nSize) {
+        return m_array[index];
+    } else {
+        throw std::out_of_range("Index out of range");
+    }
+}
+
+template <class T>
+const T& Array<T>::operator[](unsigned int index) const {
+    if (index < m_nSize) {
+        return m_array[index];
+    } else {
+        throw std::out_of_range("Index out of range");
+    }
+}
+
 #endif
+
+
 
