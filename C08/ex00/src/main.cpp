@@ -1,6 +1,6 @@
 #include <easyfind.hpp>
 
-int main(int, char**)
+int main()
 {
     std::vector<int> arrV = {1, 2, 3, 4, 5};
     try {
