@@ -1,7 +1,7 @@
 #include "ScalarConverter.hpp"
 
-const std::string ScalarConverter::typeNames[] = {"nan", "+inf", "-inf"};
-const int ScalarConverter::typesSize = 3;
+const std::string typeNames[] = {"nan", "+inf", "-inf"};
+const int typesSize = 3;
 
 ScalarConverter::ScalarConverter() {}
 
@@ -16,9 +16,9 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other) {
 	return *this;
 }
 
-void ScalarConverter::convertToChar(const std::string& str) {
+void convertToChar(const std::string& str) {
 	if (str.size() == 1 && std::isprint(str[0]) && !std::isdigit(str[0])) {
-		std::cout << "char: '" << str[0] << "'" << std::endl;
+		std::cout << "char: '" << static_cast<char>(str[0]) << "'" << std::endl;
 		return ;
 	}
 	int res = std::atoi(str.c_str());
@@ -33,7 +33,11 @@ void ScalarConverter::convertToChar(const std::string& str) {
 	std::cout << "char: impossible" << std::endl;
 }
 
-void ScalarConverter::convertToInt(const std::string& str) {
+void convertToInt(const std::string& str) {
+	if (str.size() == 1 && std::isprint(str[0]) && !std::isdigit(str[0])) {
+		std::cout << "int: " << static_cast<int>(str[0]) << std::endl;
+		return ;
+	}
 	int mediores = std::atoi(str.c_str());
 	float result = 0;
 
@@ -48,7 +52,7 @@ void ScalarConverter::convertToInt(const std::string& str) {
 	std::cout << "int: " << mediores << std::endl;
 }
 
-void ScalarConverter::convertToFloat(const std::string& str) {
+void convertToFloat(const std::string& str) {
 	for (int i = 0; i < typesSize; i++) {
 		if (str == typeNames[i]){
 			std::cout << "float: " << (str+"f") << std::endl;
@@ -59,10 +63,8 @@ void ScalarConverter::convertToFloat(const std::string& str) {
 			return ;
 		}
 	}
-
-	if (str.size() == 1 && std::isdigit(str[0])) {
-		std::cout << "float: " << str << ".0f" << std::endl;
-		return ;
+	if (str.length() == 1 && isprint(str[0]) && !isdigit(str[0])) {
+		std::cout << "float: " << static_cast<float>(str[0]) << ".0f" << std::endl;
 	}
 
 	std::istringstream iss(str);
@@ -74,7 +76,7 @@ void ScalarConverter::convertToFloat(const std::string& str) {
 	std::cout << "Invalid conversion to float" << std::endl;
 }
 
-void ScalarConverter::convertToDouble(const std::string& str) {
+void convertToDouble(const std::string& str) {
 	for (int i = 0; i < typesSize; i++) {
 		if (str == typeNames[i]){
 			std::cout << "double: " << str << std::endl;
