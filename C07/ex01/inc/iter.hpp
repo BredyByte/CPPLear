@@ -3,9 +3,15 @@
 #include <iostream>
 #include <string>
 
-
 template <class myType>
 void iter(myType *arrDir, size_t arrLen, void (*f)(myType &)) {
+	for (size_t i = 0; i < arrLen; i++) {
+		f(arrDir[i]);
+	}
+}
+
+template <class myType>
+void iter(myType *arrDir, size_t arrLen, void (*f)(const myType &)) {
 	for (size_t i = 0; i < arrLen; i++) {
 		f(arrDir[i]);
 	}
