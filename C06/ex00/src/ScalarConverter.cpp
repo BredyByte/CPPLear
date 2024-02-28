@@ -32,14 +32,8 @@ void charPrinting(int toInt) {
 
 void otherPrinting (int toInt, float toFloat, double toDouble) {
 	std::cout << "int: " << toInt << std::endl;
-	std::cout << "float: " << toFloat;
-	if (toFloat == toInt)
-		std::cout << ".0";
-	std::cout << "f" << std::endl;
-	std::cout << "double: " << toDouble;
-	if (toDouble == toInt)
-		std::cout << ".0";
-	std::cout << std::endl;
+	std::cout << "float: " << toFloat << ((toFloat == toInt) ? ".0" : "") << "f" << std::endl;
+	std::cout << "double: " << toDouble << ((toDouble == toInt) ? ".0" : "") << std::endl;
 }
 
 void convertToInt(const std::string& str) {
@@ -53,7 +47,7 @@ void convertToInt(const std::string& str) {
 }
 
 void convertToFloat(const std::string& str) {
-	 if (str.back() == 'f') {
+	 if (!str.empty() && str[str.length() - 1] == 'f') {
 		float floatC = std::atof(str.c_str());
 		double doubleC = static_cast<double>(floatC);
 		int intC = static_cast<int>(doubleC);
@@ -78,31 +72,23 @@ void convertToDouble(const std::string& str) {
 }
 
 void ScalarConverter::convert(const std::string& str) {
-	try {
-		if (str.length() == 1 && std::isprint(str[0]) && !std::isdigit(str[0])) {
-			std::cout << "char: '" << static_cast<char>(str[0]) << "'" << std::endl;
-			std::cout << "int: " << static_cast<int>(str[0]) << std::endl;
-			std::cout << "float: " << static_cast<float>(str[0]) << ".0f" << std::endl;
-			std::cout << "double: " << static_cast<double>(str[0]) << ".0" << std::endl;
-			return;
-		}
-		for (int i = 0; i < typesSize; i++) {
-			if (str == typeNames[i]){
-				std::cout << "char: Invalid conversion to char" << std::endl;
-				std::cout << "int: Invalid conversion to int" << std::endl;
-				std::cout << "float: " << typeNames[i%3] << "f" << std::endl;
-				std::cout << "double: " << typeNames[i%3] << std::endl;
-				return ;
-			}
-		}
-		convertToFloat(str);
-		convertToDouble(str);
-		convertToInt(str);
+	if (str.length() == 1 && std::isprint(str[0]) && !std::isdigit(str[0])) {
+		std::cout << "char: '" << static_cast<char>(str[0]) << "'" << std::endl;
+		std::cout << "int: " << static_cast<int>(str[0]) << std::endl;
+		std::cout << "float: " << static_cast<float>(str[0]) << ".0f" << std::endl;
+		std::cout << "double: " << static_cast<double>(str[0]) << ".0" << std::endl;
+		return;
 	}
-	catch (std::exception& e) {
-		std::cout << "char: Impossible convert to char" << std::endl;
-		std::cout << "int: Impossible convert to int" << std::endl;
-		std::cout << "float: Impossible convert to float" << std::endl;
-		std::cout << "double: Impossible convert to double" << std::endl;
+	for (int i = 0; i < typesSize; i++) {
+		if (str == typeNames[i]){
+			std::cout << "char: Invalid conversion to char" << std::endl;
+			std::cout << "int: Invalid conversion to int" << std::endl;
+			std::cout << "float: " << typeNames[i%3] << "f" << std::endl;
+			std::cout << "double: " << typeNames[i%3] << std::endl;
+			return ;
+		}
 	}
+	convertToFloat(str);
+	convertToDouble(str);
+	convertToInt(str);
 }
