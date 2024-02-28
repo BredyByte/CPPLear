@@ -18,7 +18,7 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other) {
 
 void charPrinting(int toInt) {
 	if (toInt >= 0 && toInt <= 127) {
-		if (!std::isprint(toInt) || toInt == 32 || toInt == 127) {
+		if (!std::isprint(toInt) || toInt == 127) {
 			std::cout << "char: Non displayable character" << std::endl;
 		}
 		else {
@@ -43,7 +43,7 @@ void otherPrinting (int toInt, float toFloat, double toDouble) {
 }
 
 void convertToInt(const std::string& str) {
-	int intC = std::stoi(str);
+	int intC = std::atoi(str.c_str());
 	int floatC = static_cast<float>(intC);
 	int doubleC = static_cast<double>(intC);
 
@@ -54,7 +54,7 @@ void convertToInt(const std::string& str) {
 
 void convertToFloat(const std::string& str) {
 	 if (str.back() == 'f') {
-		float floatC = std::stof(str);
+		float floatC = std::atof(str.c_str());
 		double doubleC = static_cast<double>(floatC);
 		int intC = static_cast<int>(doubleC);
 
@@ -67,7 +67,7 @@ void convertToFloat(const std::string& str) {
 void convertToDouble(const std::string& str) {
 	size_t pos = str.find(str);
 	if (pos != std::string::npos) {
-		double doubleC = std::stod(str);
+		double doubleC = std::atof(str.c_str());
 		int intC = static_cast<int>(doubleC);
 		float floatC = static_cast<float>(doubleC);
 
