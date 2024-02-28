@@ -6,7 +6,7 @@ SRC = src/
 SRCS = $(SRC)main.cpp $(SRC)ScalarConverter.cpp
 
 OBJS = $(addprefix obj/,$(notdir $(SRCS:.cpp=.o)))
-CFLAG = -Wall -Wextra -Werror
+CFLAG = -Wall -Wextra -Werror -std=c++98
 HEADERS = -I ./inc
 
 all: $(NAME)

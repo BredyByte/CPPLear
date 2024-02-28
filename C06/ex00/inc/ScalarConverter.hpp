@@ -5,6 +5,7 @@
 #include <sstream>
 #include <exception>
 #include <cstring>
+#include <cstdlib>
 
 class ScalarConverter {
 public:
@@ -13,12 +14,6 @@ public:
 	ScalarConverter(const ScalarConverter& other);
 	ScalarConverter& operator=(const  ScalarConverter& other);
 
-    class NonDisplayableChar : public std::exception {
-    public:
-        const char* what() const throw() {
-            return "Non displayable character";
-        }
-    };
 	static void convert(const std::string& str);
 };
 

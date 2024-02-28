@@ -35,7 +35,7 @@ int main(int argc, char **argv) {
 
 
     std::string result = ss.str();
-    size_t pos = result.find(searchString);
+    size_t pos = result.find(".");
 
     while (pos != std::string::npos) {
         result = result.substr(0, pos) + replaceString + result.substr(pos + searchString.length());
