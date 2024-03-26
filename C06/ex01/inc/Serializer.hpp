@@ -12,14 +12,13 @@ typedef struct Data {
 } Data;
 
 class Serializer {
-	public:
+	private:
 		Serializer();
 		~Serializer();
 		Serializer(Serializer& other);
 		Serializer& operator=(Serializer& other);
-
+	public:
 		static uintptr_t serialize(Data* ptr); // It takes a pointer and converts it to the unsigned integer type uintptr_t
-
 		static Data* deserialize(uintptr_t raw); // It takes an unsigned integer type uintptr_t and converts it to a pointer
 
 };
