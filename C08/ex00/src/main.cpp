@@ -2,7 +2,12 @@
 
 int main()
 {
-    std::vector<int> arrV = {1, 2, 3, 4, 5};
+    std::vector<int> arrV;
+    arrV.push_back(1);
+    arrV.push_back(2);
+    arrV.push_back(3);
+    arrV.push_back(4);
+    arrV.push_back(5);
     try {
         easyfind(arrV, 8);
     }
