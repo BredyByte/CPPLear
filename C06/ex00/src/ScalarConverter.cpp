@@ -1,7 +1,7 @@
 #include "ScalarConverter.hpp"
 
-const std::string typeNames[] = {"nan", "+inf", "-inf", "nanf", "+inff", "-inff"};
-const int typesSize = 6;
+const std::string typeNames[] = {"nan", "+inf", "-inf", "inf", "nanf", "+inff", "-inff", "inff"};
+const int typesSize = 8;
 
 ScalarConverter::ScalarConverter() {}
 
@@ -31,13 +31,18 @@ void charPrinting(int toInt) {
 }
 
 void otherPrinting (int toInt, float toFloat, double toDouble) {
-	std::cout << "int: " << toInt << std::endl;
+	if (std::isinf(toDouble) || std::isnan(toDouble)) {
+		std::cout << "int: Impossible convert to int" << std::endl;
+	}else {
+		std::cout << "int: " << toInt << std::endl;
+	}
 	std::cout << "float: " << toFloat << ((toFloat == toInt) ? ".0" : "") << "f" << std::endl;
 	std::cout << "double: " << toDouble << ((toDouble == toInt) ? ".0" : "") << std::endl;
 }
 
 void convertToInt(const std::string& str) {
-	int intC = std::atoi(str.c_str());
+	char *end;
+	long intC = std::strtol(str.c_str(), &end, 10);
 	int floatC = static_cast<float>(intC);
 	int doubleC = static_cast<double>(intC);
 
@@ -47,10 +52,11 @@ void convertToInt(const std::string& str) {
 }
 
 void convertToFloat(const std::string& str) {
-	 if (!str.empty() && str[str.length() - 1] == 'f') {
-		float floatC = std::atof(str.c_str());
+	char *end;
+	float floatC = std::strtof(str.c_str(), &end);
+	 if (end != str && *end == 'f') {
 		double doubleC = static_cast<double>(floatC);
-		int intC = static_cast<int>(doubleC);
+		int intC = static_cast<int>(floatC);
 
 		charPrinting(intC);
 		otherPrinting(intC, floatC, doubleC);
@@ -59,9 +65,9 @@ void convertToFloat(const std::string& str) {
 }
 
 void convertToDouble(const std::string& str) {
-	size_t pos = str.find(str);
-	if (pos != std::string::npos) {
-		double doubleC = std::atof(str.c_str());
+	char *end;
+	double doubleC = std::strtod(str.c_str(), &end);
+	if (end != str && doubleC != static_cast<int>(doubleC)) {
 		int intC = static_cast<int>(doubleC);
 		float floatC = static_cast<float>(doubleC);
 
@@ -83,8 +89,8 @@ void ScalarConverter::convert(const std::string& str) {
 		if (str == typeNames[i]){
 			std::cout << "char: Invalid conversion to char" << std::endl;
 			std::cout << "int: Invalid conversion to int" << std::endl;
-			std::cout << "float: " << typeNames[i%3] << "f" << std::endl;
-			std::cout << "double: " << typeNames[i%3] << std::endl;
+			std::cout << "float: " << typeNames[i%4] << "f" << std::endl;
+			std::cout << "double: " << typeNames[i%4] << std::endl;
 			return ;
 		}
 	}

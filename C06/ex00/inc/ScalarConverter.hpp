@@ -6,6 +6,7 @@
 #include <exception>
 #include <cstring>
 #include <cstdlib>
+#include <cmath>
 
 class ScalarConverter {
 private:
