@@ -25,35 +25,43 @@ Base* generate() {
 
 void identify(Base* p) {
 	if (p == NULL) {
-		std::cout << "NULL" << std::endl;
+		std::cout << "OK: NULL" << std::endl;
 		return;
 	}
 	else if (p == dynamic_cast<A*>(p)) {
-		std::cout << "A" << std::endl;
+		std::cout << "OK: A by pointer" << std::endl;
 	}
 	else if (p == dynamic_cast<B*>(p)) {
-		std::cout << "B" << std::endl;
+		std::cout << "OK: B by pointer" << std::endl;
 	}
 	else if (p == dynamic_cast<C*>(p)) {
-		std::cout << "C" << std::endl;
+		std::cout << "OK: C by pointer" << std::endl;
 	}
 	else {
-		std::cout << "Unknown" << std::endl;
+		std::cout << "ERROR: Unknown" << std::endl;
 	}
 }
 
-void identify(Base& p) {
-	if (&p == dynamic_cast<A*>(&p)) {
-		std::cout << "A" << std::endl;
+void identify(Base &p) {
+	try {
+		A &a = dynamic_cast<A&>(p);
+		(void)a;
+		std::cout << "OK: A by reference" << std::endl;
 	}
-	else if (&p == dynamic_cast<B*>(&p)) {
-		std::cout << "B" << std::endl;
-	}
-	else if (&p == dynamic_cast<C*>(&p)) {
-		std::cout << "C" << std::endl;
-	}
-	else {
-		std::cout << "Unknown" << std::endl;
+	catch(const std::exception &e) {
+		try {
+			B &b = dynamic_cast<B&>(p);
+			(void)b;
+			std::cout << "OK: B by reference" << std::endl;
+		}
+		catch(const std::exception &e) {
+			try {
+				C &c = dynamic_cast<C&>(p);
+				(void)c;
+				std::cout << "OK: C by reference" << std::endl;
+			}
+			catch(const std::exception &e) { }
+		}
 	}
 }
 
