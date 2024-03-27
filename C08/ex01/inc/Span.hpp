@@ -16,11 +16,11 @@ class Span {
 		Span();
 		Span(unsigned int N);
 		~Span();
-		Span(Span& other);
-		Span& operator=(Span& other);
+		Span(Span const& other);
+		Span& operator=(Span const& other);
 
-		unsigned int getSize();
-		std::vector<int> getVector();
+		unsigned int getSize() const;
+		std::vector<int> getVector() const;
 
 		void addNumber(int number);
 		int shortestSpan();

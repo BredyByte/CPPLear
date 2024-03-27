@@ -14,5 +14,21 @@ int main()
     catch (std::exception &e) {
         std::cout << e.what() << std::endl;
     }
+
+
+    std::vector<int> arrP;
+    arrP.push_back(0);
+    arrP.push_back(-12);
+    arrP.push_back(12);
+    arrP.push_back(-7);
+    arrP.push_back(8);
+    arrP.push_back(7);
+    arrP.push_back(-8);
+    try {
+        easyfind(arrP, 7);
+    }
+    catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
     return 0;
 }
