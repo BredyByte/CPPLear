@@ -31,7 +31,7 @@ void charPrinting(int toInt) {
 }
 
 void otherPrinting (int toInt, float toFloat, double toDouble) {
-	if (std::isinf(toDouble) || std::isnan(toDouble)) {
+	if (std::isinf(toDouble) || std::isnan(toDouble) || toDouble > std::numeric_limits<int>::max() || toDouble < std::numeric_limits<int>::min()) {
 		std::cout << "int: Impossible convert to int" << std::endl;
 	}else {
 		std::cout << "int: " << toInt << std::endl;
