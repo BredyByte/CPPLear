@@ -36,8 +36,6 @@ int main(int argc, char **argv) {
 		B.sortList();
 		endTime = getTime();
 		unsigned long long durationB = endTime - startTime;
-		(void) durationB;
-		(void) durationA;
 
 		std::string before = getBefore(argv, argc - 1);
 
