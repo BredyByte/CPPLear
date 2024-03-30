@@ -44,9 +44,9 @@ int main(int argc, char **argv) {
 		std::cout << "After: " << A << std::endl;
 		std::cout << "After: " << B << std::endl;
 
-		std::cout << "Time to process a range of " << (argc-1) << " elements with vector: " << durationA << " milliseconds" << std::endl;
+		std::cout << "Time to process a range of " << (argc-1) << " elements with vector: " << durationA << " microseconds" << std::endl;
 
-		std::cout << "Time to process a range of " << (argc-1) << " elements with list: " << durationB << " milliseconds" << std::endl;
+		std::cout << "Time to process a range of " << (argc-1) << " elements with list: " << durationB << " microseconds" << std::endl;
 	}
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;

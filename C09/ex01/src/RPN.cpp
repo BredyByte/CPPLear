@@ -20,13 +20,13 @@ RPN& RPN::operator=(RPN const& other) {
 }
 
 void RPN::initCalc() {
-	if (_numbers.empty() || _signs.empty()) {
+	if (_numbers.empty() || (_numbers.size() - 1 != _signs.size())) {
 		throw std::invalid_argument("Error: Can't calculate it, bad argumens");
 	}
 
 	int _res = _numbers.front();
 	_numbers.pop();
-	
+
     while (!_numbers.empty() && !_signs.empty()) {
         int num = _numbers.front();
         _numbers.pop();
