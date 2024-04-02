@@ -42,13 +42,15 @@ void otherPrinting (int toInt, float toFloat, double toDouble) {
 
 void convertToInt(const std::string& str) {
 	char *end;
-	long intC = std::strtol(str.c_str(), &end, 10);
-	int floatC = static_cast<float>(intC);
-	int doubleC = static_cast<double>(intC);
+	int intC = std::strtol(str.c_str(), &end, 10);
+	if (str != end) {
+		int floatC = static_cast<float>(intC);
+		int doubleC = static_cast<double>(intC);
 
-	charPrinting(intC);
-	otherPrinting(intC, floatC, doubleC);
-	std::exit(EXIT_SUCCESS);
+		charPrinting(intC);
+		otherPrinting(intC, floatC, doubleC);
+		std::exit(EXIT_SUCCESS);
+	}
 }
 
 void convertToFloat(const std::string& str) {
@@ -97,4 +99,6 @@ void ScalarConverter::convert(const std::string& str) {
 	convertToFloat(str);
 	convertToDouble(str);
 	convertToInt(str);
+	
+	std::cerr << "Error: bad argument" << std::endl;
 }
