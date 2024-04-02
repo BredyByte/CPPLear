@@ -6,7 +6,7 @@ int main(int argc, char **argv) {
 			throw std::runtime_error("Error: Bad arguments, < ./RPN \"8 9 * 9 - 9 - 9 - 4 - 1 +\">");
 		}
 		RPN A(argv[1]);
-		A.initCalc();
+		//A.initCalc();
 	}
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;

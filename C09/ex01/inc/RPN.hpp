@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <cmath>
 #include <queue>
+#include <stack>
 #include <fstream>
 #include <sstream>
 #include <exception>
@@ -19,8 +20,7 @@ public:
 	RPN& operator=(RPN const& other);
 	void initCalc();
 private:
-	std::queue<int> _numbers;
-	std::queue<std::string> _signs;
+	std::stack<int> _numbers;
 	int _res;
 	RPN();
 };
