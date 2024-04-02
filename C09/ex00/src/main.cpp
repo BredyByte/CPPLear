@@ -3,19 +3,46 @@
 bool checkDate(const std::string& date) {
     if (date.length() != 10) {
         return false;
-	}
+    }
 
-    for (int i = 0; i < 10; ++i) {
-        if (i == 4 || i == 7) {
-			if (date[i] != '-') {
-            	return false;
-			}
+    if (date[4] != '-' || date[7] != '-') {
+        return false;
+    }
+
+    for (size_t i = 0; i < date.length(); ++i) {
+        char c = date[i];
+        if (!std::isdigit(c) && c != '-') {
+            return false;
+        }
+    }
+
+
+    std::string yearStr = date.substr(0, 4);
+    std::string monthStr = date.substr(5, 2);
+    std::string dayStr = date.substr(8, 2);
+
+    int year = std::stoi(yearStr);
+    int month = std::stoi(monthStr);
+    int day = std::stoi(dayStr);
+
+    if (month < 1 || month > 12) {
+        return false;
+    }
+
+    int maxDay = 31;
+    if (month == 4 || month == 6 || month == 9 || month == 11) {
+        maxDay = 30;
+    }
+	else if (month == 2) {
+		if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+            maxDay = 29;
         }
 		else {
-            if (!isdigit(date[i])) {
-                return false;
-			}
+            maxDay = 28;
         }
+    }
+    if (day < 1 || day > maxDay) {
+        return false;
     }
 
     return true;
@@ -48,14 +75,14 @@ int main(int argc, char **argv) {
 				ss >> separator;
 				ss >> number;
 				if (!checkDate(date)) {
-					std::cout << "Error: invalid date " << std::endl;
+					std::cout << "Error: invalid date -> " <<  date <<  std::endl;
 					continue;
 				}
 				else {
 					std:: cout << date << " -> ";
 				}
 				if (number <= 0 || number >= 1000) {
-					std::cout << "Error: invalid value" << std::endl;
+					std::cout << "Error: invalid value -> " << number << std::endl;
 					continue;
 				}
 				else {
