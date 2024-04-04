@@ -43,7 +43,7 @@ void otherPrinting (int toInt, float toFloat, double toDouble) {
 void convertToInt(const std::string& str) {
 	char *end;
 	int intC = std::strtol(str.c_str(), &end, 10);
-	if (str != end) {
+	if (str != end && *end == '\0') {
 		int floatC = static_cast<float>(intC);
 		int doubleC = static_cast<double>(intC);
 
@@ -56,20 +56,22 @@ void convertToInt(const std::string& str) {
 void convertToFloat(const std::string& str) {
 	char *end;
 	float floatC = std::strtof(str.c_str(), &end);
-	 if (end != str && *end == 'f') {
-		double doubleC = static_cast<double>(floatC);
-		int intC = static_cast<int>(floatC);
+	if (end != str && *end == 'f') {
+		if (*(end + 1) == '\0') {
+			double doubleC = static_cast<double>(floatC);
+			int intC = static_cast<int>(floatC);
 
-		charPrinting(intC);
-		otherPrinting(intC, floatC, doubleC);
-		std::exit(EXIT_SUCCESS);
+			charPrinting(intC);
+			otherPrinting(intC, floatC, doubleC);
+			std::exit(EXIT_SUCCESS);
+		}
 	 }
 }
 
 void convertToDouble(const std::string& str) {
 	char *end;
 	double doubleC = std::strtod(str.c_str(), &end);
-	if (end != str && doubleC != static_cast<int>(doubleC)) {
+	if (end != str && doubleC != static_cast<int>(doubleC) && *end == '\0') {
 		int intC = static_cast<int>(doubleC);
 		float floatC = static_cast<float>(doubleC);
 
