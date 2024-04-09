@@ -18,10 +18,9 @@ public:
 	RPN(std::string const& str);
 	~RPN();
 	RPN& operator=(RPN const& other);
-	void initCalc();
 private:
-	std::stack<int> _numbers;
-	int _res;
+	std::stack<float> _numbers;
+	float _res;
 	RPN();
 };
 

@@ -29,13 +29,13 @@ int main(int argc, char **argv) {
 		unsigned long long startTime= getTime();
 		A.sortVect();
 		unsigned long long endTime = getTime();
-		unsigned long long durationA = endTime - startTime;
+		float durationA = endTime - startTime;
 
 		PmergeMe B(argv, (argc - 1), LISTFLAG);
-		startTime= getTime();
+		startTime = getTime();
 		B.sortList();
 		endTime = getTime();
-		unsigned long long durationB = endTime - startTime;
+		float durationB = endTime - startTime;
 
 		std::string before = getBefore(argv, argc - 1);
 
@@ -44,9 +44,9 @@ int main(int argc, char **argv) {
 		std::cout << "After: " << A << std::endl;
 		std::cout << "After: " << B << std::endl;
 
-		std::cout << "Time to process a range of " << (argc-1) << " elements with vector: " << durationA << " microseconds" << std::endl;
+		std::cout << "Time to process a range of " << (argc-1) << " elements with vector: " << durationA / 1000 << " miliseconds" << std::endl;
 
-		std::cout << "Time to process a range of " << (argc-1) << " elements with list: " << durationB << " microseconds" << std::endl;
+		std::cout << "Time to process a range of " << (argc-1) << " elements with list: " << durationB / 1000 << " miliseconds" << std::endl;
 	}
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;

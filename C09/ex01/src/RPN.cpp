@@ -38,16 +38,17 @@ RPN::RPN(std::string const& str) {
 		if (part.size() == 1) {
 			std::string sign = getSign(part);
 			if (isdigit(part[0])) {
-				int num = std::atoi(part.c_str());
+				char* c;
+				float num = std::strtof(part.c_str(), &c);
 				_numbers.push(num);
 			}
-			else if (_numbers.size() < 2 && sign  == "") {
-				throw std::runtime_error("Error: Can't parse it, bad argumens unknown sign.");
+			else if (_numbers.size() < 2 || sign  == "") {
+				throw std::runtime_error("Error: Can't parse it, bad argumens.");
 			}
 			else if (sign != "") {
-				int num1 = _numbers.top();
+				float num1 = _numbers.top();
 				_numbers.pop();
-				int num2 = _numbers.top();
+				float num2 = _numbers.top();
 				_numbers.pop();
 				if (sign == "+") {
 					_numbers.push(num2 + num1);
@@ -59,13 +60,20 @@ RPN::RPN(std::string const& str) {
 					_numbers.push(num2 * num1);
 				}
 				else if (sign == "/") {
+					if (num1 == 0) {
+						throw std::runtime_error("Error: Can't divide by zero.");
+					}
 					_numbers.push(num2 / num1);
 				}
 			}
+			_res = _numbers.top();
 		}
 		else {
 			throw std::runtime_error("Error: Can't parse it, bad argumens chunk more than 1 char.");
 		}
 	}
-	std::cout << "Result: " << _numbers.top() << std::endl;
+	if (_numbers.size() != 1) {
+		throw std::runtime_error("Error: Can't parse it, bad argumens.");
+	}
+	std::cout << "Result: " << _res << std::endl;
 };
