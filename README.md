@@ -1,4 +1,4 @@
-# CPP Modules Málaga Campus 42
+# CPP Modules 0-9
 
 > This repository contains a collection of CPP modules completed as part of the École 42 curriculum.
 
